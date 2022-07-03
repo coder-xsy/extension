@@ -18,8 +18,7 @@
             "firefox": 60,
             "chrome": 67,
             "safari": 11.1
-          },
-          "useBuiltIns": "usage"
+          }
         }
       ],
       "@babel/preset-react"
@@ -49,6 +48,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@arco-design/web-react": "^2.36.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
