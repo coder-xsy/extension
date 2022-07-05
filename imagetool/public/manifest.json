@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Imagetool",
+  "name": "imagetool",
   "version": "0.1.0",
-  "description": "My Chrome Extension",
+  "description": "自由创建任意尺寸图片，支持背景和文案设置",
   "options_page": "option.html",
   "icons": {
     "16": "icons/icon.png",
@@ -14,7 +14,7 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_title": "Imagetool",
+    "default_title": "imagetool",
     "default_popup": "popup.html"
   },
   "permissions": [
