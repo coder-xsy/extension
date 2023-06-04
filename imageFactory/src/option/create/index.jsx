@@ -46,11 +46,13 @@ function getTime() {
   return `${now.getFullYear()}${now.getMonth() + 1}${now.getDate()}${now.getHours()}${now.getMinutes()}${now.getSeconds()}`
 }
 
-const CreateImage = () => {
+const CreateImage = ({maxSize}) => {
   const [form] = Form.useForm()
   const [bg, setbg] = React.useState('#18e972')
   const [url, setUrl] = React.useState('')
   const [time, setTime] = React.useState('')
+  const [width, setWidth] = React.useState('375')
+  const [height, setHeight] = React.useState('300')
 
   const handleCreate = async() => {
     const value = form.getFieldsValue();
@@ -58,17 +60,30 @@ const CreateImage = () => {
     setUrl(url)
     setTime(getTime())
   }
+  const maxSizeConfig = React.useMemo(() => {
+    const size = {maxHeight: '540px', maxWidth: '800px'}
+    if (!maxSize) {
+      return size
+    }
+    if (maxSize.maxWidth) {
+      Object.assign(size, { maxWidth: maxSize.maxWidth })
+    }
+    if (maxSize.maxHeight) {
+      Object.assign(size, { maxHeight: maxSize.maxHeight })
+    }
+    return size
+  }, [maxSize])
 
   return (
     <div style={{minHeight: '400px'}}>
       <Card title="图片参数">
-        <Form form={form} initialValues={{height: 400, width: 375, text: 'image'}} layout="inline">
-          <FormItem field="height" label="高度">
-            <InputNumber suffix="像素" />
-          </FormItem> 
+        <Form form={form} initialValues={{height: 300, width: 375, text: 'image'}} layout="inline">
           <FormItem field="width" label="宽度">
-            <InputNumber suffix="像素" />
+            <InputNumber onChange={v => setWidth(v)} suffix="像素" />
           </FormItem>
+          <FormItem field="height" label="高度">
+            <InputNumber onChange={v => setHeight(v)} suffix="像素" />
+          </FormItem> 
           <FormItem label="背景">
             <div style={{display: 'flex'}}>
               <Input value={bg} disabled />
@@ -95,6 +110,11 @@ const CreateImage = () => {
               .color-pick-container:hover .color-picker{
                 display: flex
               }
+              .show-image {
+                max-width: 800px;
+                max-height: 540px;
+                object-fit: contain;
+              }
             `
           }
         </style>
@@ -103,10 +123,10 @@ const CreateImage = () => {
         url && (
           <Card>
             <div>
-              <small>点击图片下载到本地</small>
+              <small>点击图片下载到本地（下方展示效果存在缩放展示，下载图片保持原有尺寸）</small>
             </div>
-            <a href={url.replace("image/png", "image/octet-stream")} download={`${time}.png`}>
-              <img src ={url} />
+            <a href={url.replace("image/png", "image/octet-stream")} download={`${width}-${height}.png`}>
+              <img className="show-image" style={maxSizeConfig}  src ={url} />
             </a>
           </Card>
         )

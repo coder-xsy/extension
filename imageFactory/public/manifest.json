@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "imagetool",
+  "name": "imageFactory",
   "version": "0.1.0",
-  "description": "自由创建任意尺寸图片，支持背景和文案设置",
+  "description": "create image width any size setted by you",
   "options_page": "option.html",
   "icons": {
     "16": "icons/icon.png",
@@ -14,7 +14,7 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_title": "imagetool",
+    "default_title": "imageFactory",
     "default_popup": "popup.html"
   },
   "permissions": [

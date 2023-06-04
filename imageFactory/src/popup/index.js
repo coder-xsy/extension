@@ -7,7 +7,7 @@ import CreateImage from '../option/create/index'
 const App = () => {
   return (
     <div style={{width: '600px'}}>
-      <CreateImage />
+      <CreateImage maxSize={{maxWidth: '520px', maxHeight: '300px'}} />
     </div>
   )
 }

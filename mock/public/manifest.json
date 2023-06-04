@@ -21,7 +21,7 @@
     "webRequest",
     "webRequestBlocking",
     "storage",
-    "<all_urls>"
+    "debugger"
   ],
   "content_scripts": [
     {

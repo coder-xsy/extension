@@ -1,0 +1,19 @@
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  z-index: 3000;
+  padding: 0 24px;
+  height: 64px;
+  transition: background .3s ease,box-shadow .3s ease;
+  box-shadow: inset 0 -1px 0 0 #eaeaea;
+  transform: translateZ(0);
+  -webkit-backdrop-filter: saturate(180%) blur(5px);
+  backdrop-filter: saturate(180%) blur(5px);
+  background: hsla(0,0%,100%,.8);
+  height: 64px;
+}
